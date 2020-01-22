@@ -1,0 +1,8 @@
+package com.proiect.proiect.repository;
+
+import com.proiect.proiect.entities.Project;
+import org.springframework.data.repository.CrudRepository;
+
+public interface ProjectRepository extends CrudRepository<Project, Integer> {
+
+}
