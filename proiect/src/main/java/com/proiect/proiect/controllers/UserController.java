@@ -1,13 +1,14 @@
 package com.proiect.proiect.controllers;
 
+import com.proiect.proiect.models.UserModel;
 import com.proiect.proiect.services.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping(path="/users")
+@RequestMapping(path="/user")
 public class UserController {
     private UserService userService;
 
@@ -16,7 +17,17 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity getAllUsers(){
-        return ResponseEntity.ok(userService.getAllUsers());
+    public ResponseEntity<List<UserModel>> GetUsers(){
+        return ResponseEntity.ok(userService.GetUsers());
+    }
+
+    @PutMapping
+    public void EditUser(UserModel model){
+        userService.EditUser(model);
+    }
+
+    @DeleteMapping
+    public void DeleteUser(Integer id){
+        userService.DeleteUser(id);
     }
 }

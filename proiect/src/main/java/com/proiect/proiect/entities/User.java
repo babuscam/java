@@ -16,6 +16,17 @@ public class User {
     private String lastName;
     private String email;
     private String password;
+    private boolean enabled;
+
+    public User() {
+    }
+
+    public User(String email, String firstName, String lastName, String password){
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+    }
 
     @ManyToOne()
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -79,5 +90,13 @@ public class User {
 
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

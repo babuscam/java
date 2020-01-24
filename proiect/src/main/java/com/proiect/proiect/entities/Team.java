@@ -6,6 +6,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 public class Team {
@@ -28,6 +29,15 @@ public class Team {
     @OneToMany(mappedBy = "team")
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<User> members;
+
+    public Team(){
+
+    }
+
+    public Team(String name, Optional<User> leader) {
+        this.leader = leader.get();
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;
