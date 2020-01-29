@@ -1,32 +1,16 @@
-package com.proiect.proiect.entities;
+package com.proiect.proiect.models;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import com.proiect.proiect.entities.Project;
+import com.proiect.proiect.entities.Status;
+import com.proiect.proiect.entities.User;
 
-import javax.persistence.*;
+public class TaskModel {
 
-@Entity
-public class Task {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
-
     private String name;
     private String description;
-
-    @OneToOne()
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @JoinColumn(name = "statusId")
     private Status status;
-
-    @OneToOne()
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @JoinColumn(name = "projectId")
     private Project project;
-
-    @ManyToOne()
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @JoinColumn(name = "userId")
     private User user;
 
     public Integer getId() {
@@ -35,6 +19,15 @@ public class Task {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public TaskModel(Integer id, String name, String description, Status status, Project project, User user) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.status = status;
+        this.project = project;
+        this.user = user;
     }
 
     public String getName() {

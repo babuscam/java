@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -36,10 +37,11 @@ public class ProiectApplication {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http
+					.csrf().disable()
 					.authorizeRequests()
-					.antMatchers("/team*").hasRole("ADMIN")
-					.antMatchers("/home*").hasRole("USER")
-					.antMatchers("/","/register").permitAll()
+					.antMatchers("/account/Register").permitAll()
+					.antMatchers("/team/*").hasRole("ADMIN")
+					.antMatchers("/task/*").hasRole("USER")
 					.and()
 					.httpBasic();
 		}

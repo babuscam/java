@@ -16,18 +16,18 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @RequestMapping(value = "/GetUsers", method= RequestMethod.GET)
     public ResponseEntity<List<UserModel>> GetUsers(){
         return ResponseEntity.ok(userService.GetUsers());
     }
 
-    @PutMapping
+    @RequestMapping(value = "/EditUser", produces = "application/json", method=RequestMethod.PUT)
     public void EditUser(UserModel model){
         userService.EditUser(model);
     }
 
-    @DeleteMapping
-    public void DeleteUser(Integer id){
+    @RequestMapping(value = "/DeleteUser/{id}", method=RequestMethod.DELETE)
+    public void DeleteUser(@PathVariable Integer id){
         userService.DeleteUser(id);
     }
 }

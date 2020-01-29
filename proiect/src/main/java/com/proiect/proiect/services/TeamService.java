@@ -5,6 +5,7 @@ import com.proiect.proiect.models.TeamModel;
 import com.proiect.proiect.repository.ProjectRepository;
 import com.proiect.proiect.repository.TeamRepository;
 import com.proiect.proiect.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityExistsException;
